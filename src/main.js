@@ -13,6 +13,10 @@ Vue.config.productionTip = false
 //vue moment
 Vue.use(require('vue-moment'));
 
+// vue social sharing
+var SocialSharing = require('vue-social-sharing');
+Vue.use(SocialSharing);
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
