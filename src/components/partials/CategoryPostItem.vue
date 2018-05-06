@@ -6,7 +6,7 @@
         :key="categoryPost.slug + '_' + index"
         class="category__post col-xs-12 col-sm-12 col-md-6"
         >
-        <router-link :to="`/${categoryPost.categories[0].slug}/${categoryPost.slug}`">
+        <router-link :to="`/category/${categoryPost.categories[0].slug}/${categoryPost.slug}`">
             <article class="category__article">
             <figure class="category__image">
                 <img v-if="categoryPost.featured_image" :src="categoryPost.featured_image" alt="">
@@ -48,6 +48,11 @@
     computed: {
       categoryPosts() {
         return store.state.categoryPosts;
+      }
+    },
+    watch: {
+      '$route': function(from, to) {
+        this.getPostsByCategory(this.categoryName);
       }
     },
     mounted() {

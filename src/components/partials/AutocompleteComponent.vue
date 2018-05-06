@@ -172,11 +172,11 @@
           router.push({ path: '/search-results'})
         },
         goToCategory(path) {
-          router.push({path: `/${path}`});
+          router.push({path: `/category/${path}`});
           this.isOpen = false;
         },
         goToTag(path) {
-          router.push({path: `/${path}-tag`});
+          router.push({path: `/tag/${path}`});
           this.isOpen = false;
         }
     },

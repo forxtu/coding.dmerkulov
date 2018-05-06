@@ -42,7 +42,7 @@
             :key="searchPost.slug + '_' + index"
             class="category__post col-xs-12 col-sm-12 col-md-6"
             >
-            <router-link :to="`${searchPost.categories[0].slug}/${searchPost.slug}`">
+            <router-link :to="`/category/${searchPost.categories[0].slug}/${searchPost.slug}`">
               <article class="category__article">
                 <figure class="category__image">
                   <img v-if="searchPost.featured_image" :src="searchPost.featured_image" alt="">

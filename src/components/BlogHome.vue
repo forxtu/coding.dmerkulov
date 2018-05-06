@@ -17,7 +17,7 @@
             class="featured"
             >
             <router-link 
-              :to="`${post.categories[0].slug}/${post.slug}`"
+              :to="`/category/${post.categories[0].slug}/${post.slug}`"
               class="featured__wrap"
               >
               <div class="featured__left">

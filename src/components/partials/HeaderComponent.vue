@@ -27,7 +27,7 @@
                   <router-link
                     v-for="(category, index) in categories"
                     :key="category.slug + '_' + index"
-                    :to='`/${categories[index].slug}`'
+                    :to='`/category/${categories[index].slug}`'
                     exact
                     >
                     {{categories[index].name}}
