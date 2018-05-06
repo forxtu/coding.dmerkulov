@@ -1,0 +1,15 @@
+//helpers
+@import './helpers/reset';
+@import './helpers/variables';
+@import './helpers/mixins';
+@import './helpers/base';
+@import './helpers/animations';
+
+//partials
+@import './partials/header';
+@import './partials/footer';
+
+//pages
+@import './pages/category';
+@import './pages/search';
+@import './pages/home';

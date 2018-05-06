@@ -1,0 +1,43 @@
+.header {
+  &__top {
+    @include flex-between-center;
+    height: 60px;
+    &-logo {
+      a {
+        font-family: 'Josefin Sans', sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        color: $primary-title-color;
+      }
+    }
+  }
+  &__nav {
+    @include flex-between-center;
+    @include translate3d--0;
+    height: 50px;
+    a {
+      color: $secondary-text-color;
+      text-transform: uppercase;
+      font-size: 14px;
+      &.router-link-active {
+        color: $primary-text-color;
+      }
+      // &:hover {}
+    }
+    &--fixed {
+      position: fixed;
+      background-color: #fff;
+      width: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 0 30px;
+      z-index: 10;
+      -webkit-box-shadow: 0 2px 2px -2px rgba(0,0,0,.15);
+      box-shadow: 0 2px 2px -2px rgba(0,0,0,.15);
+      &-placeholder {
+        height: 50px;
+      }
+    }
+  }
+}

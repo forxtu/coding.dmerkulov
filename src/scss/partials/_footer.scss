@@ -1,0 +1,25 @@
+.footer {
+  @include flex-between-center;
+  
+  &-wrapper {
+    background-color: rgba(0, 0, 0, .88);
+    padding: 50px 0;
+    margin-top: 32px;
+  }
+  &__logo {
+    a {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: $white;
+    }
+  }
+  &__right {
+    a {
+      color: $gray;
+      &:not(:last-child) {
+        margin-right: 40px;
+      }
+    }
+  }
+}
