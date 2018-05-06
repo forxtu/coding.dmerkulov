@@ -5,13 +5,7 @@ import App from './App'
 import router from './router'
 import Vuex from 'vuex'
 import store from './store'
-
-// font awesome icons
-import 'vue-awesome/icons/star'
-import 'vue-awesome/icons/search'
-import 'vue-awesome/icons/chevron-right'
-import Icon from 'vue-awesome/components/Icon'
-Vue.component('icon', Icon)
+import * as icons from './icons'
 
 // 
 Vue.config.productionTip = false
