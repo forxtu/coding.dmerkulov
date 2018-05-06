@@ -2,18 +2,23 @@
   <div class="autocomplete">
     <div class="autocomplete__input">
       <!-- <icon name="search"></icon> -->
-      <input type="text" 
-        @input="onChange" 
-        v-model="search" 
-        @keyup.down="onArrowDown" 
-        @keyup.up="onArrowUp" 
-        @keyup.enter="onEnter"
-        placeholder="Search"
-        ref="autocompleteInput"
-        class="search__input-field search--underlined"
+      <input 
+          type="text" 
+          @input="onChange" 
+          v-model="search" 
+          @keyup.down="onArrowDown" 
+          @keyup.up="onArrowUp" 
+          @keyup.enter="onEnter"
+          placeholder="Search"
+          ref="autocompleteInput"
+          class="search__input-field search--underlined"
       />
     </div>
-    <ul id="autocomplete-results" v-show="isOpen" class="autocomplete-results">
+    <ul 
+        id="autocomplete-results" 
+        v-show="isOpen" 
+        class="autocomplete-results"
+      >
       <span class="autocomplete__search-text">
         <icon name="search"></icon>
         Search for 
@@ -31,8 +36,8 @@
           @click="setResult(result)" 
           class="autocomplete-result" 
           :class="{ 'is-active': index === arrowCounter }"
-          >
-          {{ result }}
+        >
+        {{ result }}
       </li>
       <span class="autocomplete__search-subtitle">Categories</span>
       <li 
@@ -41,8 +46,8 @@
           @click="goToCategory(category.slug)" 
           class="autocomplete-result" 
           :class="{ 'is-active': index === arrowCounter }"
-          >
-          {{ category.name }}
+        >
+        {{ category.name }}
       </li>
       <span class="autocomplete__search-subtitle">Tags</span>
       <li 
@@ -50,7 +55,8 @@
           :key="tag.slug + '_tag_' + index"
           @click="goToTag(tag.slug)" 
           class="autocomplete-result" 
-          :class="{ 'is-active': index === arrowCounter }">
+          :class="{ 'is-active': index === arrowCounter }"
+        >
         {{ tag.name }}
       </li>
       <div class="autocomplete__popover-arrow"></div>

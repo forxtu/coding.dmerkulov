@@ -1,8 +1,9 @@
 <template>
   <div id="blog-all-posts" class="posts">    
     <category-title-component
-      pageTitle="All featured posts"
-      pageSubtitle="check it out!">
+        pageTitle="All featured posts"
+        pageSubtitle="check it out!"
+      >
     </category-title-component>
 
     <div class="container-fluid">
@@ -18,9 +19,9 @@
     <div class="container-fluid">
       <div class="row">
           <div 
-            v-for="(post, index) in posts" 
-            :key="post.slug + '_' + index"
-            class="category__post col-xs-12 col-sm-12 col-md-6"
+              v-for="(post, index) in posts" 
+              :key="post.slug + '_' + index"
+              class="category__post col-xs-12 col-sm-12 col-md-6"
             >
             <router-link :to="`/category/${post.categories[0].slug}/${post.slug}`">
               <article class="category__article">

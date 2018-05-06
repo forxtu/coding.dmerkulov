@@ -11,24 +11,28 @@
               </div>
               <div class="header__top-right">
                 <autocomplete-component
-                  :items="titleInPost"
-                >
+                    :items="titleInPost"
+                  >
                 </autocomplete-component>
               </div>
             </div>
-            <div v-if="isFixed" class="header__nav--fixed-placeholder"></div>
+            <div 
+                v-if="isFixed" 
+                class="header__nav--fixed-placeholder"
+              >
+            </div>
             <fixed-header 
-              :fixed.sync="isFixed"
-              :threshold="60"
+                :fixed.sync="isFixed"
+                :threshold="60"
               >
               <div :class="{ 'header__nav--fixed': isFixed }">
                 <div class="header__nav">
                   <router-link to='/' exact>Home</router-link>
                   <router-link
-                    v-for="(category, index) in categories"
-                    :key="category.slug + '_' + index"
-                    :to='`/category/${categories[index].slug}`'
-                    exact
+                      v-for="(category, index) in categories"
+                      :key="category.slug + '_' + index"
+                      :to='`/category/${categories[index].slug}`'
+                      exact
                     >
                     {{categories[index].name}}
                   </router-link>

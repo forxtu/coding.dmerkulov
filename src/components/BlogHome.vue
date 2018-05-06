@@ -12,20 +12,20 @@
           <button @click="getPosts">getPosts</button>
 
           <div 
-            v-for="(post,index) in posts" 
-            :key="post.slug + '_' + index"
-            class="featured"
+              v-for="(post,index) in posts" 
+              :key="post.slug + '_' + index"
+              class="featured"
             >
             <router-link 
-              :to="`/category/${post.categories[0].slug}/${post.slug}`"
-              class="featured__wrap"
+                :to="`/category/${post.categories[0].slug}/${post.slug}`"
+                class="featured__wrap"
               >
               <div class="featured__left">
                 <div class="featured__left-top">
                   <h2 class="featured__title">{{ post.title }}</h2>
                   <p class="featured__text">{{ post.summary }}</p>
                 </div>
-                <span class="featured__text-bottom">
+                <div class="featured__text-bottom">
                   <div class="featured__text-bottom-category">
                     <!-- <span>{{post.categories[0].name}}</span> -->
                   </div>
@@ -33,7 +33,7 @@
                     <span>{{post.published | moment("calendar")}}</span><icon name="star"></icon>
                     <span>{{read_time(post.body)}}</span>
                   </div>
-                </span>
+                </div>
               </div>
               <div class="featured__image">
                 <img v-if="post.featured_image" :src="post.featured_image" alt="">
@@ -50,19 +50,20 @@
           <fixed-header 
               :fixed.sync="isFixed"
               :threshold="60"
-              >
-              <div class="sidebar"
+            >
+            <div 
+                class="sidebar"
                 :class="{ 'sidebar--fixed': isFixed }"
-                >
-                <div class="sidebar__title-wrap">
-                  <span class="sidebar__title">
-                    Popular
-                  </span>
-                </div>
-                <div class="sidebar__content">
-                  content
-                </div>
+              >
+              <div class="sidebar__title-wrap">
+                <span class="sidebar__title">
+                  Popular
+                </span>
               </div>
+              <div class="sidebar__content">
+                content
+              </div>
+            </div>
           </fixed-header>
         </div> <!-- end of right sidebar -->
       </div> 

@@ -2,24 +2,33 @@
   <div class="container-fluid">
     <div class="row">
       <div 
-        v-for="(categoryPost, index) in this.$store.state.categoryPosts.recent_posts" 
-        :key="categoryPost.slug + '_' + index"
-        class="category__post col-xs-12 col-sm-12 col-md-6"
+          v-for="(categoryPost, index) in this.$store.state.categoryPosts.recent_posts" 
+          :key="categoryPost.slug + '_' + index"
+          class="category__post col-xs-12 col-sm-12 col-md-6"
         >
-        <router-link :to="`/category/${categoryPost.categories[0].slug}/${categoryPost.slug}`">
-            <article class="category__article">
-            <figure class="category__image">
-                <img v-if="categoryPost.featured_image" :src="categoryPost.featured_image" alt="">
-                <img v-else src="http://via.placeholder.com/250x250" alt="">
-            </figure>
-            <div class="category__copy">
-                <h2 class="category__copy-title">{{ categoryPost.title }}</h2>
-                <p class="category__copy-text">{{ categoryPost.summary }}</p>
-                <span class="category__copy-bottom">
-                {{categoryPost.categories[0].name}}
-                </span>
-            </div>
-            </article>
+        <router-link 
+            :to="`/category/${categoryPost.categories[0].slug}/${categoryPost.slug}`"
+          >
+          <article class="category__article">
+          <figure class="category__image">
+              <img 
+                  v-if="categoryPost.featured_image" 
+                  :src="categoryPost.featured_image" alt=""
+                >
+              <img 
+                  v-else 
+                  src="http://via.placeholder.com/250x250" 
+                  alt=""
+                >
+          </figure>
+          <div class="category__copy">
+              <h2 class="category__copy-title">{{ categoryPost.title }}</h2>
+              <p class="category__copy-text">{{ categoryPost.summary }}</p>
+              <span class="category__copy-bottom">
+              {{categoryPost.categories[0].name}}
+              </span>
+          </div>
+          </article>
         </router-link>
       </div>
     </div>
