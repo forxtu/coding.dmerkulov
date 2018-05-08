@@ -4,7 +4,7 @@
         <div class="col-md-12">
           <div class="category__title-block">
             <div class="category__title-left">
-              <h1 class="category__title-main">{{pageTitle}}</h1>
+              <h1 class="category__title-main">{{pageTitle | uppercase | remove-dashes}}</h1>
               <p class="category__title-subtitle">{{pageSubtitle}}</p>
             </div>
             <slot name="pageRight"></slot>
