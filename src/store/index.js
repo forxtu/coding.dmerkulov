@@ -6,7 +6,6 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    count: 0,
     posts: [],
     postsInArray: [],
     titleInPost: [],
@@ -18,9 +17,6 @@ export default new Vuex.Store({
     categoryPosts: []
   },
   mutations: {
-    increment(state, amount) {
-      state.count += amount
-    },
     getPosts(state, numberOfPage, postsOnPage) {
       butter.post.list({
         page: numberOfPage,
@@ -42,8 +38,8 @@ export default new Vuex.Store({
     getCategories(state) {
       butter.category.list()
         .then((res) => {
-          console.log('List of Categories:')
-          console.log(res.data.data)
+          // console.log('List of Categories:')
+          // console.log(res.data.data)
           state.categories = res.data.data;
           state.nameOfCategory = state.categories.map((name) => {
             return name.name;
@@ -53,8 +49,8 @@ export default new Vuex.Store({
     getTags(state) {
       butter.tag.list()
         .then((res) => {
-          console.log('List of Tags:')
-          console.log(res.data.data)
+          // console.log('List of Tags:')
+          // console.log(res.data.data)
           state.tags = res.data.data;
           state.nameOfTag = state.tags.map((name) => {
             return name.name;

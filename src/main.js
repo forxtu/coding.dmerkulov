@@ -5,7 +5,8 @@ import App from './App'
 import router from './router'
 import Vuex from 'vuex'
 import store from './store'
-import * as icons from './icons'
+import * as icons from './scripts/icons'
+import * as filters from './scripts/filters'
 
 // 
 Vue.config.productionTip = false
