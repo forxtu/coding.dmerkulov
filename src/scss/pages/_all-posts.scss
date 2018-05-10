@@ -1,0 +1,22 @@
+.all-posts {
+    &__navigation {
+      @include flex-between-center;
+      height: 50px;
+      margin-bottom: 32px;
+      &-placeholder {
+        font-size: 16px;
+        letter-spacing: 2px;
+      }
+      &-prev, 
+      &-next {
+        transition: .2s;
+        &:hover {
+          color: $primary-text-color;
+        }
+        svg {
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+}
