@@ -4,9 +4,8 @@ import BlogHome from '@/components/BlogHome'
 import BlogPost from '@/components/BlogPost'
 import BlogAllPosts from '@/components/BlogAllPosts'
 import SearchResults from '@/components/SearchResults'
-import JavaScriptCategory from '@/components/JavaScriptCategory'
-import VueJsCategory from '@/components/VueJsCategory'
 import Category from '@/components/Category'
+import TagPage from '@/components/TagPage'
 
 Vue.use(Router)
 
@@ -34,23 +33,16 @@ export default new Router({
       ]
     },
     {
+      path: '/tag/:tag/',
+      name: 'tag',
+      component: TagPage
+    },
+    {
       path: '/category/:category/:slug',
       name: 'blog-post',
       component: BlogPost,
       props: true
     },
-    // {
-    //   path: '/java-script/',
-    //   name: 'java-script-category',
-    //   component: JavaScriptCategory,
-    //   props: true
-    // },
-    // {
-    //   path: '/vuejs/',
-    //   name: 'vue-js-category',
-    //   component: VueJsCategory,
-    //   props: true
-    // },
     {
       path: '/search-results/',
       name: 'search-results',
