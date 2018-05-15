@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid">
+    <div class="container">
       <div class="row">
         <div class="col-md-12">
           <div class="category__title-block">
@@ -8,6 +8,13 @@
               <p class="category__title-subtitle">{{pageSubtitle}}</p>
             </div>
             <slot name="pageRight"></slot>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="category__posts-title-wrap">
+            <span class="category__posts-title">For you</span>
           </div>
         </div>
       </div>
