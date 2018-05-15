@@ -1,24 +1,5 @@
 <template>
-  <!-- <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="blog-post">
-          <h1>{{ post.data.title }}</h1>
-          <h4>{{ post.data.author.first_name }} {{ post.data.author.last_name }}</h4>
-          <div v-html="post.data.body"></div>
-
-          <router-link v-if="post.meta.previous_post" :to="/category/ + post.meta.previous_post.slug" class="button">
-            {{ post.meta.previous_post.title }}
-          </router-link>
-          <router-link v-if="post.meta.next_post" :to="/category/ + post.meta.next_post.slug" class="button">
-            {{ post.meta.next_post.title }}
-          </router-link>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
-  <div class="container-fluid">
+  <div class="container">
     <div class="row post__hero">
       <div class="col-sm-6 col-md-6 post__hero-left">
         <div class="post__hero-top">
@@ -64,6 +45,7 @@
     </div>
 
     <div class="row">
+      <!-- left menu -->
       <div class="col-xs-2 col-sm-2">
         <social-sharing 
             url="https://vuejs.org/"
@@ -85,16 +67,52 @@
         </social-sharing>
       </div>
       <div class="col-xs-8 col-sm-8">
+        <!-- post body -->
         <p 
             v-html="post.data.body"
             class="post__main"
           >
         </p>
+        <!-- post bottom -->
+        <div class="post__bottom">
+          <div class="post__bottom-links">
+            <div class="post__bottom-links-left">
+              <router-link 
+                  v-if="post.meta.previous_post" 
+                  :to="`/category/${post.data.categories[0].slug}/${post.meta.previous_post.slug}`" 
+                  class="post__bottom-links"
+                >
+                {{ post.meta.previous_post.title }}
+              </router-link>
+              <span 
+                  class="post__bottom-links-no-post"
+                  v-else
+                >
+                You are reading first post
+              </span>
+            </div>
+            <div class="post__bottom-links-right">
+              <router-link 
+                  v-if="post.meta.next_post" 
+                  :to="`/category/${post.data.categories[0].slug}/${post.meta.next_post.slug}`" 
+                  class="post__bottom-links"
+                >
+                {{ post.meta.next_post.title }}
+                <icon name="chevron-right"></icon>
+              </router-link>
+              <span 
+                  class="post__bottom-links-no-post"
+                  v-else
+                >
+                You are reading last post
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="col-xs-2 col-sm-2"></div>
     </div>
   </div>
-
 </template>
 
 <script>
