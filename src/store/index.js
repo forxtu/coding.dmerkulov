@@ -7,6 +7,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     posts: [],
+    postsMeta: [],
     postsInArray: [],
     titleInPost: [],
     searchResult: '',
@@ -17,13 +18,14 @@ export default new Vuex.Store({
     categoryPosts: []
   },
   mutations: {
-    getPosts(state, numberOfPage, postsOnPage) {
+    getPosts(state, payload) {
       butter.post.list({
-        page: numberOfPage,
-        page_size: postsOnPage
+        page: payload.numberOfPage,
+        page_size: payload.postsOnPage
       }).then((res) => {
         // console.log(res.data)
         state.posts = res.data.data;
+        state.postsMeta = res.data.meta;
         state.postsInArray = state.posts.map((postsInArrayItem) => {
           return postsInArrayItem;
         })
@@ -67,9 +69,9 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    // getPosts(context) {
-    //   context.commit('getPosts')
-    // }
+    getPosts(context) {
+      context.commit('getPosts')
+    },
     getPostsByCategory({ commit }) {
         commit('getPostsByCategory')
     }
