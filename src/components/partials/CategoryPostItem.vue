@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container">
     <div class="row">
       <div 
           v-for="(categoryPost, index) in this.$store.state.categoryPosts.recent_posts" 
@@ -21,12 +21,15 @@
                   alt=""
                 >
           </figure>
-          <div class="category__copy">
+          <div class="category__content">
+            <div class="category__copy">
               <h2 class="category__copy-title">{{ categoryPost.title }}</h2>
               <p class="category__copy-text">{{ categoryPost.summary }}</p>
-              <span class="category__copy-bottom">
-              {{categoryPost.categories[0].name}}
-              </span>
+            </div>
+            <div class="category__bottom">
+              <span>{{categoryPost.published | moment("calendar")}}</span><icon name="star"></icon>
+              <span>{{readTime(categoryPost.body)}}</span>
+            </div>
           </div>
           </article>
         </router-link>
@@ -41,6 +44,7 @@
   import store from '@/store';
   import { mapMutations, mapActions } from 'vuex';
   import { EventBus } from '@/event-bus';
+  import readTimeMixin from '@/mixins/readTimeMixin';
   export default {
     name: 'category-post-item',
     props: {
@@ -49,6 +53,7 @@
         default: ''
       }
     },
+    mixins: [readTimeMixin],
     methods: {
       getPostsByCategory(category) {
         store.commit('getPostsByCategory', category);

@@ -1,15 +1,13 @@
 <template>
   <div id="blog-home" class="home">    
-    <div class="container-fluid">
+    <div class="container">
       <div class="row">
         <!-- featured posts -->
         <div class="col-md-8">
           <div class="category__posts-title-wrap">
-            <span class="category__posts-title">Featured for you</span>
+            <span class="category__posts-title">Featured</span>
             <span class="category__posts-more"><router-link to="/posts">More<icon name="chevron-right"></icon></router-link></span>
           </div>
-
-          <button @click="getPosts">getPosts</button>
 
           <div 
               v-for="(post,index) in posts" 
@@ -27,11 +25,11 @@
                 </div>
                 <div class="featured__text-bottom">
                   <div class="featured__text-bottom-category">
-                    <!-- <span>{{post.categories[0].name}}</span> -->
+                    <span>{{post.categories[0].name}}</span>
                   </div>
                   <div class="featured__text-bottom-date">
                     <span>{{post.published | moment("calendar")}}</span><icon name="star"></icon>
-                    <span>{{read_time(post.body)}}</span>
+                    <span>{{readTime(post.body)}}</span>
                   </div>
                 </div>
               </div>
@@ -75,7 +73,8 @@
 <script>
   import { butter } from '@/buttercms';
   import store from '@/store';
-  import { mapMutations, mapActions } from 'vuex'
+  import { mapMutations, mapActions } from 'vuex';
+  import readTimeMixin from '@/mixins/readTimeMixin';
 
   import FixedHeader from 'vue-fixed-header';
   import HeaderComponent from '@/components/partials/HeaderComponent.vue';
@@ -86,6 +85,7 @@
       FixedHeader,
       HeaderComponent
     },
+    mixins: [readTimeMixin],
     data() {
       return {
         page_title: 'Featured',
@@ -100,12 +100,10 @@
       //   'getPosts'
       // ]),
       getPosts() {
-        store.commit('getPosts', 1, 5);
-      },
-      read_time(text){
-        var minutes = Math.floor(text.split(' ').length / 130 )
-        if(minutes === 0) minutes = 1
-        return minutes + ' min read'
+        store.commit('getPosts', {
+          numberOfPage: 1,
+          postsOnPage: 8
+        });
       }
     },
     computed: {

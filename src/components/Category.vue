@@ -1,27 +1,14 @@
 <template>
   <div class="category">
-    
     <category-title-component
         :pageTitle="$route.params.category"
         pageSubtitle="is fun"
     >
     </category-title-component>
-
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="category__posts-title-wrap">
-            <span class="category__posts-title">For you</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <category-post-item
         :categoryName="$route.params.category"
     >
     </category-post-item>
-
   </div>
 </template>
 
@@ -33,12 +20,14 @@
   import CategoryTitleComponent from './partials/CategoryTitleComponent';
   import CategoryPostItem from './partials/CategoryPostItem';
   import { EventBus } from '@/event-bus';
+  import readTimeMixin from '@/mixins/readTimeMixin';
   export default {
     name: 'vue-js-category',
     components: {
       CategoryTitleComponent,
       CategoryPostItem
     },
+    mixins: [readTimeMixin],
     data() {
       return {
 
