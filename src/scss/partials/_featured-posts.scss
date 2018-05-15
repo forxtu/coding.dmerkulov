@@ -1,0 +1,55 @@
+// tag page
+.tag {
+  .featured {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+// home page
+.featured {
+  margin-bottom: 48px;
+  padding-right: 30px;
+  &__wrap {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  &__left {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  &__title {
+    padding-bottom: $post-title--padding;
+  }
+  &__text {
+    &-bottom {
+      color: $secondary-text-color;
+      margin-top: 12px;
+      &-category {
+        span {
+          font-family: 'Josefin Sans', sans-serif;
+          font-size: $font-size--small;
+          font-weight: 600;
+        }
+      }
+      &-date {
+        display: flex;
+        align-items: center;
+        span {
+          font-size: 12px;
+        }
+        svg {
+          width: $icon-width--small;
+          margin: 0 8px;
+        }
+      }
+    }
+  }
+  &__image {
+    width: 30%;
+    overflow: hidden;
+  }
+}
