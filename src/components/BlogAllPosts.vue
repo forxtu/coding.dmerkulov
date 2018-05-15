@@ -6,17 +6,46 @@
       >
     </category-title-component>
 
-    <div class="container-fluid">
+    <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <div class="category__posts-title-wrap">
-            <span class="category__posts-title">For you</span>
+          <div class="all-posts__navigation">
+            <a 
+                v-if="postsMeta.previous_page !== null"
+                href="#" 
+                @click.prevent="getPosts(postsMeta.previous_page, 6)"
+                class="all-posts__navigation-prev"
+              >
+              <icon name="chevron-left"></icon>
+            </a>
+            <span 
+                v-else
+                class="all-posts__navigation-placeholder"
+              >
+              #first
+            </span>
+            <a 
+                v-if="postsMeta.next_page !== null"
+                href="#" 
+                @click.prevent="getPosts(postsMeta.next_page, 6)"
+                class="all-posts__navigation-next"
+              >
+              <icon name="chevron-right"></icon>
+            </a>
+            <span 
+                v-else
+                class="all-posts__navigation-placeholder"
+              >
+              #last
+            </span>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="container-fluid">
+    
+
+    <div class="container">
       <div class="row">
           <div 
               v-for="(post, index) in posts" 
@@ -25,10 +54,10 @@
             >
             <router-link :to="`/category/${post.categories[0].slug}/${post.slug}`">
               <article class="category__article">
-                <figure class="category__image">
+                <div class="category__image">
                   <img v-if="post.featured_image" :src="post.featured_image" alt="">
                   <img v-else src="http://via.placeholder.com/250x250" alt="">
-                </figure>
+                </div>
                 <div class="category__copy">
                   <h2 class="category__copy-title">{{ post.title }}</h2>
                   <p class="category__copy-text">{{ post.summary }}</p>
@@ -48,7 +77,8 @@
 <script>
   import { butter } from '@/buttercms';
   import store from '@/store';
-  import { mapMutations, mapActions } from 'vuex'
+  import { mapMutations, mapActions } from 'vuex';
+  import readTimeMixin from '@/mixins/readTimeMixin';
 
   import CategoryTitleComponent from './partials/CategoryTitleComponent';
 
@@ -57,6 +87,7 @@
     components: {
       CategoryTitleComponent
     },
+    mixins: [readTimeMixin],
     data() {
       return {
         page_title: 'Featured',
@@ -64,22 +95,23 @@
       }
     },
     methods: {
-      getPosts() {
-        store.commit('getPosts', 1, 5);
-      },
-      read_time(text){
-        var minutes = Math.floor(text.split(' ').length / 130 )
-        if(minutes === 0) minutes = 1
-        return minutes + ' min read'
+      getPosts(pageNumber, postsAmount) {
+        store.commit('getPosts', {
+          numberOfPage: pageNumber,
+          postsOnPage: postsAmount
+        });
       }
     },
     computed: {
       posts() {
-        return store.state.posts
+        return store.state.posts;
+      },
+      postsMeta() {
+        return store.state.postsMeta;
       }
     },
     mounted() {
-      this.getPosts();
+      this.getPosts(1, 6);
     }
   }
 </script>
